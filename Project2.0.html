@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confession</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .yes {
+      background-color: #4caf50;
+      color: white;
+    }
+    .no {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+      cursor: pointer;
+    }
+    .message {
+      font-size: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hang out w me?? ❤️</h1>
+  <button class="button yes" onclick="accept()">Yes</button>
+  <button class="button no" id="noButton">No</button>
+  <div class="message" id="message"></div>
+
+  <script>
+    const noButton = document.getElementById("noButton");
+    const message = document.getElementById("message");
+
+    function accept() {
+      message.textContent = "Ean joymay hz! ";
+    }
+
+    function moveNo(event) {
+      // Prevent the "No" button from being clicked
+      event.preventDefault();
+
+      // Move the button to a random position
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
+    }
+
+    // Add event listeners to make the "No" button move
+    noButton.addEventListener("mouseover", moveNo); // For desktop
+    noButton.addEventListener("touchstart", moveNo); // For mobile
+    noButton.addEventListener("click", moveNo); // To prevent accidental clicks
+  </script>
+</body>
+</html>
